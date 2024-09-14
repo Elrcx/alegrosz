@@ -1,6 +1,8 @@
 asgiref==3.8.1
 dj-database-url==2.2.0
 Django==5.1
+django-debug-toolbar==4.4.6
+pillow==10.4.0
 psycopg==3.2.1
 psycopg-binary==3.2.1
 psycopg-pool==3.2.2
