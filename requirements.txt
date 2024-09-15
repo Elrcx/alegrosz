@@ -1,6 +1,8 @@
 asgiref==3.8.1
+crispy-bootstrap5==2024.2
 dj-database-url==2.2.0
 Django==5.1
+django-crispy-forms==2.3
 django-debug-toolbar==4.4.6
 pillow==10.4.0
 psycopg==3.2.1

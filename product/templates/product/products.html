@@ -7,14 +7,30 @@
 
     <h1>Product List</h1>
 
-        <div>
-                {% for product in products %}
-                    <h2>{{ product.name }}</h2>
-                    <img src="/media/{{ product.images.all.0 }}" alt="{{  product.name }}">
-                    <p>{{ product.images.all.0 }}</p>
-                    <p>{{ product.description }}</p>
-                    <p>Cena: <b>{{ product.price }}</b></p>
-                {% endfor %}
-        </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+            <div class="col">
+                <div class="card">
+                    {% if product.images.first %}
+                        <img src="/media/{{ product.images.all.0 }}" class="card-img-top" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'images/no_photo.svg' %}" class="card-img-top" alt="{{ product.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        {% if product.description|length > 50 %}
+                            <p class="card-text">{{ product.description|slice:"50" }}...</p>
+                        {% else %}
+                            <p class="card-text">{{ product.description }}</p>
+                        {% endif %}
+                        <p class="card-text">Price: <b>${{ product.price }}</b></p>
+                        <a href="{% url 'product:product_detail' pk=product.pk %}" class="btn btn-primary">Show
+                            details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
-{%  endblock %}
+
+{% endblock %}
